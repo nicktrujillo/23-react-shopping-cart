@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts, selectProducts } from "./productsSlice";
 import styles from "./Products.module.css";
-import { newItem } from "../cart/cartSlice.js";
+import { addItem, displayCart } from "../cart/cartSlice.js";
 
 export function Products() {
   const products = useSelector(selectProducts);
@@ -17,17 +17,12 @@ export function Products() {
   };
 
   return (
-    <div>
+    <div className={styles.productPage}>
       <div className={styles.productGrid}>
-        <div className={styles.header}>
-          <div className={styles.cartIcon}>
-            <i className="fas fa-shopping-cart"></i>
-          </div>
-        </div>
         {products.map((item) => (
           <div
             className={styles.productSquare}
-            onClick={() => dispatch(newItem(item))}
+            onClick={() => dispatch(addItem(item))}
             key={item.sku}
           >
             {item.isFreeShipping ? (

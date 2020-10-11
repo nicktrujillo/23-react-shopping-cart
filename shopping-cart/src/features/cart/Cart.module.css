@@ -1,0 +1,165 @@
+.header {
+  grid-row: 1 / 2;
+  grid-column: 1 / 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  max-width: 100%;
+}
+
+.itemsFound {
+  padding-left: 10px;
+  margin-bottom: -5px;
+}
+
+.cartIcon {
+  background: #1a191f;
+  width: 25px;
+  padding: 25px;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.quantityCircle {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  color: black;
+  font-weight: bolder;
+  font-size: 12px;
+  text-align: center;
+  line-height: 18px;
+  border-radius: 50%;
+  background-color: #e3c040;
+  position: absolute;
+  right: 12px;
+  top: 47px;
+}
+
+.shoppingCart {
+  position: absolute;
+  z-index: 1;
+  width: 40%;
+  margin-left: 60%;
+  background: #1a191f;
+}
+
+.cartItem {
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.noItems {
+  color: white;
+  text-align: center;
+  padding: 50px;
+  font-size: 22px;
+}
+
+.cartTitle {
+  text-align: center;
+  font-size: 26px;
+  padding-top: 20px;
+  color: white;
+  text-decoration: underline;
+}
+
+.itemThumb {
+  width: 12%;
+  margin-right: 10px;
+}
+
+.sizeFlex {
+  display: flex;
+  margin-top: -30px;
+  color: rgb(197, 197, 197);
+}
+
+.size {
+  border-right: 1px solid rgb(197, 197, 197);
+  padding-right: 10px;
+  margin-right: 10px;
+}
+
+.quantity {
+  margin-top: -10px;
+  color: rgb(197, 197, 197);
+}
+
+.priceSection {
+  margin-top: -15px;
+  justify-self: flex-end;
+  flex-grow: 4;
+  text-align: right;
+}
+
+.deleteItem {
+  cursor: pointer;
+  margin-bottom: -5px;
+  color: rgb(197, 197, 197);
+}
+
+.deleteItem:hover {
+  color: white;
+  font-weight: bolder;
+}
+
+.totalPriceFlex {
+  display: flex;
+  justify-content: space-around;
+}
+
+.subtotal {
+  color: rgb(197, 197, 197);
+}
+
+.totalPrice {
+  color: #e3c040;
+}
+
+.subtotalFlex {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  padding-bottom: 30px;
+  margin-top: 10px;
+  border-top: 1px solid black;
+  box-shadow: 1px 0 10px black;
+}
+
+.checkout {
+  width: 70%;
+  margin: 0 auto;
+  padding: 20px;
+  cursor: pointer;
+  background: black;
+  color: white;
+  border: none;
+  outline: none;
+}
+
+.checkout:hover {
+  background: #e3c040;
+  color: black;
+}
+
+.quantityButtons {
+  background: black;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 4px;
+  width: 8%;
+  margin-left: 1px;
+  margin-top: -2px;
+}
+
+.quantityButtons:hover {
+  background: #e3c040;
+  color: black;
+}

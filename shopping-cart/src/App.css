@@ -1,4 +1,12 @@
 html,
 body {
-  height: 100%;
+  max-width: 100%;
+}
+
+@media screen and (min-width: 1024px) {
+  .productGrid {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    align-items: end;
+  }
 }
