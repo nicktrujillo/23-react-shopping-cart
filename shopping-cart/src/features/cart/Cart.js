@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { gsap } from 'gsap';
 import {
   removeItem,
   selectItems,
   displayCart,
   toggleCart,
   increaseTotal,
-  cartItems,
   decreaseQuantity,
   increaseQuantity,
 } from "./cartSlice";
@@ -16,28 +16,50 @@ export function Cart() {
   const items = useSelector(selectItems);
   const showCart = useSelector(displayCart);
   const prices = useSelector(increaseTotal);
-  const cartCount = useSelector(cartItems);
   const dispatch = useDispatch();
-  console.log(cartCount);
+  console.log(prices);
+
+  useEffect(() => {
+    gsap.from("#cartItem", {
+      duration: 1,
+      scale: 0.5, 
+      opacity: 0, 
+      ease: "elastic", 
+      stagger: 0.2,
+      force3D: true
+    });
+    gsap.from("#img", {
+      duration: 0.5,
+      x: 300,
+      stagger: 0.2,
+    })
+    gsap.from("#cart", {
+      duration: 0.5,
+      y: -300,
+    })
+  }, [showCart])
+
+
+  
 
   return (
     <div>
       <div className={styles.header}>
         <p className={styles.itemsFound}>17 Product(s) found</p>
         <div className={styles.cartIcon} onClick={() => dispatch(toggleCart())}>
-          <div className={styles.quantityCircle}>{cartCount.length}</div>
+          <div className={styles.quantityCircle}>{prices.length}</div>
           <i className="fas fa-shopping-cart"></i>
         </div>
       </div>
       {showCart ? (
-        <div className={styles.shoppingCart}>
+        <div className={styles.shoppingCart} id="cart">
           <h1 className={styles.cartTitle}>Your Cart</h1>
           {items.length == 0 ? (
             <p className={styles.noItems}>no items in cart 😞</p>
           ) : null}
           {items.map((item) => (
-            <div className={styles.cartItem} key={item.sku}>
-              <img className={styles.itemThumb} src={item.img.thumb}></img>
+            <div id="cartItem" className={styles.cartItem} key={item.sku}>
+              <img id="img" className={styles.itemThumb} src={item.img.thumb}></img>
               <div className={styles.descSection}>
                 <p>{item.title}</p>
                 <div className={styles.sizeFlex}>
@@ -76,7 +98,7 @@ export function Cart() {
             <div className={styles.totalPriceFlex}>
               <h3 className={styles.subtotal}>Subtotal</h3>
               <h2 className={styles.totalPrice}>
-                ${Number(prices.reduce((a, b) => a + b, 0)).toFixed(2)}
+                ${Number(prices.reduce((a, b) => a + b.price, 0)).toFixed(2)}
               </h2>
             </div>
             <button className={styles.checkout}>CHECKOUT</button>
